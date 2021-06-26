@@ -18,6 +18,9 @@ Revision History:
 
 --*/
 
+#ifndef JCALC_COLORS
+#define JCALC_COLORS
+
 
 //
 // Includes / usings
@@ -75,3 +78,5 @@ namespace TerminalColor
     auto    CyanU   = "\e[4;36m";
     auto    WhiteU  = "\e[4;37m";
 }
+
+#endif // !JCALC_COLORS

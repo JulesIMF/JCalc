@@ -4,31 +4,28 @@ Copyright (c) 2021 JulesIMF, MIPT
 
 Module Name:
 
-    errors.h
+    drvdebug.h
 
 Abstract:
-
-    Error codes definitions and descriptions.
+    
+    Driver debug functions implementations.
 
 Author / Creation date:
 
-    JulesIMF / 26.06.2021
+    JulesIMF / 27.06.2021
 
 Revision History:
 
 --*/
 
-
 //
 // Includes / usings
 //
 
+#include <lexer.h>
 
 //
 // Defines
 //
 
-enum class ExitCode
-{
-    NO_ERROR = 0,
-};
+void dumpLexer(Lexed lexed);

@@ -25,8 +25,10 @@ Revision History:
 #include <iostream>
 #include <string>
 #include <csignal>
-#include <errors.h>
+#include <err.h>
 #include <colors.h>
+#include <lexer.h>
+#include <drvdebug.h>
 
 
 using std::string;
@@ -34,7 +36,7 @@ using std::string;
 //
 // Defines
 //
-static char const* version = "Indev 0 (builded on " __DATE__ ")";
+static char const* version = "Indev 1 (builded on " __DATE__ ")";
 
 /**
  * Displays information about the app.
@@ -85,6 +87,6 @@ int main()
     {
         displayPrompt();
         std::getline(std::cin, input);
-
+        auto lexed = lexer(input.c_str());
     }
 }

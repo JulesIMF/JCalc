@@ -25,6 +25,16 @@ Examples:
     var     =   3; var + 4; table; history; ascii "string"
     3*(var + 4/5)/sqrt(5)*sin(4.5)
 
-LINE    ::=     REQ {';' REQ}?
+LINE    ::=     REQ {';' REQ}*
 REQ     ::=     CMD <...> | EXPR | ASGN
-EXPR    ::=     
+EXPR    ::=     TERM {['+' '-'] TERM}*
+TERM    ::=     PRIM {['*' '/'] PRIM}*
+PRIM    ::=     CALL | '-' PRIM | '(' EXPR ')' | IMM | ID
+CALL    ::=     ID '(' EXPR ')'
+ID      ::=     <alpha> ['0'-'9' <alpha>]+
+IMM     ::=     DEC | BIN | HEX | FLOAT | CHAR
+DEC     ::=     ['0' - '9']+
+BIN     ::=     '0b' ['0' - '1']+
+HEX     ::=     '0x' ['0' - '9', 'a' - 'f', 'A'-'F']+
+FLOAT   ::=     ['0' - '9']+ '.' ['0' - '9']+
+ASGN    ::=     ID ['=' '+=' '-=' '*=' '/='] EXPR
