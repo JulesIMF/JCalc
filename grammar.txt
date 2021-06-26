@@ -1,0 +1,30 @@
+/*++
+
+Copyright (c) 2021 JulesIMF, MIPT
+
+Module Name:
+
+    grammar.txt    
+
+Abstract:
+
+    Grammar description.
+
+Author / Creation date:
+
+    JulesIMF / 26.06.2021
+
+Revision History:
+
+--*/
+
+
+Examples:
+
+    exit
+    var     =   3; var + 4; table; history; ascii "string"
+    3*(var + 4/5)/sqrt(5)*sin(4.5)
+
+LINE    ::=     REQ {';' REQ}?
+REQ     ::=     CMD <...> | EXPR | ASGN
+EXPR    ::=     
