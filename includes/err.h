@@ -41,4 +41,12 @@ enum class LexerError
     UNKNOWN_TOKEN,
 };
 
+enum class ParserError
+{
+    NO_ERROR,
+    EXPECTED_REQ,
+    EXPECTED_TERM,
+    EXPECTED_PRIM,
+};
+
 #endif // !JCALC_ERRORS

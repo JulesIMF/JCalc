@@ -23,6 +23,7 @@ Revision History:
 // Includes / usings
 //
 
+#include <cstdarg>
 #include <cstdio>
 #include <messages.h>
 
@@ -46,7 +47,7 @@ int errorMessage(char const *format, ...)
                     "\e[1;39m");
     int returned = vfprintf(stderr, format, list);
     va_end(list);
-    fprintf(stderr, "\e[m");
+    fprintf(stderr, "\e[m\n");
     return returned;
 }
 
@@ -59,7 +60,7 @@ int warningMessage(char const *format, ...)
                     "\e[1;39m");
     int returned = vfprintf(stderr, format, list);
     va_end(list);
-    fprintf(stderr, "\e[m");
+    fprintf(stderr, "\e[m\n");
     return returned;
 }
 

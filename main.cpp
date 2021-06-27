@@ -29,6 +29,7 @@ Revision History:
 #include <colors.h>
 #include <lexer.h>
 #include <drvdebug.h>
+#include <messages.h>
 
 
 using std::string;
@@ -36,7 +37,7 @@ using std::string;
 //
 // Defines
 //
-static char const* version = "Indev 1 (builded on " __DATE__ ")";
+static char const* version = "Indev 2 (builded on " __DATE__ ")";
 
 /**
  * Displays information about the app.
@@ -77,16 +78,26 @@ void terminate(int param)
 */
 int main()
 {
+    
     signal(SIGINT, terminate);  //
     signal(SIGSTOP, terminate); // If SIG_ERR returned - so what? Default handler still exists
     signal(SIGTERM, terminate); //
     displayInfo();
-    string input;
     
     while(true)
     {
+        setDebug(true);
+        string input;
         displayPrompt();
         std::getline(std::cin, input);
         auto lexed = lexer(input.c_str());
+        if (lexed.lexerError == LexerError::UNKNOWN_TOKEN)
+        {
+            errorMessage("unknown token!");
+            continue;
+        }
+
+        dumpLexer(lexed); 
+        lexed.freeLexed();
     }
 }

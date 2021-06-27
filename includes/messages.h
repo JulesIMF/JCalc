@@ -30,6 +30,7 @@ Revision History:
 // Defines
 //
 
+void setDebug(bool newMode);
 int errorMessage(char const *format, ...);
 int warningMessage(char const *format, ...);
 int debugMessage(char const *format, ...);

@@ -18,6 +18,9 @@ Revision History:
 
 --*/
 
+#ifndef JCALC_DRVDEBUG
+#define JCALC_DRVDEBUG
+
 //
 // Includes / usings
 //
@@ -29,3 +32,5 @@ Revision History:
 //
 
 void dumpLexer(Lexed lexed);
+
+#endif // !JCALC_DRVDEBUG

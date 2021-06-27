@@ -22,11 +22,11 @@ Revision History:
 Examples:
 
     exit
-    var     =   3; var + 4; table; history; ascii "string"
+    var     =   3; var + 4
     3*(var + 4/5)/sqrt(5)*sin(4.5)
 
 LINE    ::=     REQ {';' REQ}*
-REQ     ::=     CMD <...> | EXPR | ASGN
+REQ     ::=     EXPR | ASGN | _epsilon
 EXPR    ::=     TERM {['+' '-'] TERM}*
 TERM    ::=     PRIM {['*' '/'] PRIM}*
 PRIM    ::=     CALL | '-' PRIM | '(' EXPR ')' | IMM | ID

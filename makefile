@@ -1,16 +1,25 @@
-COMP= g++
-FLAGS= -O2 -g
+CXX		= g++
+INC		= includes
+CFLAGS	= -O0 -g -I$(INC)
 
-OBJS= obj/common.o obj/driver.o obj/main.o
+OBJS= common/common.o driver/driver.o main.o
 
-all: $(OBJS)
-	$(COMP) $(FLAGS) \
-	$(OBJS) -o jcalc
+jcalc: $(OBJS)
+	$(CXX) $(CFLAGS) $^ -o $@
 
-obj/common.o: messages.c.o
+main.o:
+	$(CXX) $(CFLAGS) -c main.cpp
+
+%.task:
+	(cd $(@D); make clean)
+	make $*/$*.o
+
+%.o:
+	(cd $(@D); make)
+
+clean:
+	rm $(OBJS)
 
 
-.c.o:
-	$(COMP) $(FLAGS) \
-	-c -o $*.o $<
-	mv $*.o obj/$*.o
+
+	

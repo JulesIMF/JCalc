@@ -32,8 +32,8 @@ Revision History:
 
 void dumpLexer(Lexed lexed)
 {
-    printf("%sLexer dump:\n%s", TerminalColor::BlueB, TerminalColor::Yellow);
-    for(auto vertex : lexed.tokens)
+    printf("%sLexer dump:\n%s", TerminalColor::Blue, TerminalColor::Yellow);
+    for(auto vertex : *lexed.tokens)
     {
         if(vertex->type == VertexType::Linker)
         {
@@ -42,7 +42,7 @@ void dumpLexer(Lexed lexed)
 
         if (vertex->type == VertexType::Operator)
         {
-            printf("Operator %c\n", ((Operator*)vertex)->opType);
+            printf("Op\t%c\n", ((Operator*)vertex)->opType);
         }
 
         if (vertex->type == VertexType::Imm)
@@ -72,22 +72,22 @@ void dumpLexer(Lexed lexed)
                 break;
             }
 
-            printf("Imm %s\t%lld\t%lf\n", type, imm->intValue, imm->floatValue);
+            printf("Imm\t%s\t%lld\t%lf\n", type, imm->intValue, imm->floatValue);
         }
 
         if (vertex->type == VertexType::Delimiter)
         {
-            printf("Delimiter %c\n", ((Delimiter *)vertex)->delimeter);
+            printf("Del\t%c\n", ((Delimiter *)vertex)->delimeter);
         }
 
         if (vertex->type == VertexType::Asgn)
         {
-            printf("Asgn =%c\n", ( ((Asgn *)vertex)->asgnType == '=') ? ' ' : ( ((Asgn *)vertex)->asgnType) );
+            printf("Asgn\t=%c\n", ( ((Asgn *)vertex)->asgnType == '=') ? ' ' : ( ((Asgn *)vertex)->asgnType) );
         }
 
         if (vertex->type == VertexType::Id)
         {
-            printf("Id \"%s\"\n", ((Id*)vertex)->id.c_str());
+            printf("Id\t\"%s\"\n", ((Id*)vertex)->id.c_str());
         }
     }
     

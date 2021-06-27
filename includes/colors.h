@@ -37,46 +37,46 @@ namespace TerminalColor
     // 
     // Restoration escape seq
     //
-    auto    Default = "\e[0m";
+    extern char const*    Default ;
 
     //
     // Regular text
     //
 
-    auto    Black   = "\e[0;30m";
-    auto    Red     = "\e[0;31m";
-    auto    Green   = "\e[0;32m";
-    auto    Yellow  = "\e[0;33m";
-    auto    Blue    = "\e[0;34m";
-    auto    Purple  = "\e[0;35m";
-    auto    Cyan    = "\e[0;36m";
-    auto    White   = "\e[0;37m";
+    extern char const*    Black   ;
+    extern char const*    Red     ;
+    extern char const*    Green   ;
+    extern char const*    Yellow  ;
+    extern char const*    Blue    ;
+    extern char const*    Purple  ;
+    extern char const*    Cyan    ;
+    extern char const*    White   ;
 
     //
     // Bold text
     //
 
-    auto    BlackB  = "\e[1;30m";
-    auto    RedB    = "\e[1;31m";
-    auto    GreenB  = "\e[1;32m";
-    auto    YellowB = "\e[1;33m";
-    auto    BlueB   = "\e[1;34m";
-    auto    PurpleB = "\e[1;35m";
-    auto    CyanB   = "\e[1;36m";
-    auto    WhiteB  = "\e[1;37m";
+    extern char const*    BlackB  ;
+    extern char const*    RedB    ;
+    extern char const*    GreenB  ;
+    extern char const*    YellowB ;
+    extern char const*    BlueB   ;
+    extern char const*    PurpleB ;
+    extern char const*    CyanB   ;
+    extern char const*    WhiteB  ;
 
     //
     // Underlined text
     // 
     
-    auto    BlackU  = "\e[4;30m";
-    auto    RedU    = "\e[4;31m";
-    auto    GreenU  = "\e[4;32m";
-    auto    YellowU = "\e[4;33m";
-    auto    BlueU   = "\e[4;34m";
-    auto    PurpleU = "\e[4;35m";
-    auto    CyanU   = "\e[4;36m";
-    auto    WhiteU  = "\e[4;37m";
+    extern char const*    BlackU  ;
+    extern char const*    RedU    ;
+    extern char const*    GreenU  ;
+    extern char const*    YellowU ;
+    extern char const*    BlueU   ;
+    extern char const*    PurpleU ;
+    extern char const*    CyanU   ;
+    extern char const*    WhiteU  ;
 }
 
 #endif // !JCALC_COLORS

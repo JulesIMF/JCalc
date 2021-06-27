@@ -8,7 +8,7 @@
             "name": "g++ - Сборка и отладка активного файла",
             "type": "cppdbg",
             "request": "launch",
-            "program": "${fileDirname}/${fileBasenameNoExtension}",
+            "program": "${workspaceFolder}/jcalc",
             "args": [],
             "stopAtEntry": false,
             "cwd": "${fileDirname}",

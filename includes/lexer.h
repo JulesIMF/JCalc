@@ -27,8 +27,9 @@ Revision History:
 
 struct Lexed
 {
-    std::vector<Vertex*> tokens;
+    std::vector<Vertex*>* tokens;
     LexerError lexerError = LexerError::NO_ERROR;
+    void freeLexed(void);
 };
 
 Lexed lexer(char const *src);

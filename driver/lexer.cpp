@@ -8,7 +8,7 @@ Module Name:
 
 Abstract:
 
-    Lexer proceeds lexical analysis.
+    Lexer cuts input into tokens.
 
 Author / Creation date:
 
@@ -58,6 +58,7 @@ static bool tryLinker(char const*& src, vector<Vertex*>& tokens)
 {
     if(*src == ';')
     {
+        src++;
         tokens.push_back(new Linker);
         return true;
     }
@@ -69,8 +70,8 @@ static bool tryOperator(char const*& src, vector<Vertex *> &tokens)
 {
     switch (*src)
     {
-    case '(':
-    case ')':
+    case '+':
+    case '-':
     case '*':
     case '/':
         tokens.push_back(new Operator(*src)); // setted this char as optype
@@ -164,6 +165,7 @@ static int digitToNum(char digit, long long base)
         return -1;
     }
 
+    return -1;
 }
 
 /**
@@ -314,29 +316,36 @@ static bool tryChar(char const*& src, vector<Vertex *> &tokens)
     return true;
 }
 
+void Lexed::freeLexed()
+{
+    delete tokens;
+}
+
 Lexed lexer(char const *src)
-{   
-    vector<Vertex*> tokens;
+{
+    vector<Vertex *> *tokens = new vector<Vertex *>;
 
     while (*src)
     {
-        if (trySpace(src, tokens))
+        if (trySpace(src, *tokens))
             continue;
-        if (tryAsgn(src, tokens))       // it`s nessesary to place it here
+        if (tryAsgn(src, *tokens))       // it`s nessesary to place it here
             continue;
-        if (tryOperator(src, tokens))   // cause tryOperator can recognize '+=' as '+'
+        if (tryOperator(src, *tokens))   // cause tryOperator can recognize '+=' as '+'
             continue;
-        if (tryNum(src, tokens))
+        if (tryNum(src, *tokens))
             continue;
-        if (tryLinker(src, tokens))
+        if (tryLinker(src, *tokens))
             continue;
-        if (tryId(src, tokens))
+        if (tryId(src, *tokens))
             continue;
-        if (tryDelimiter(src, tokens))
+        if (tryDelimiter(src, *tokens))
             continue;
-        if (tryChar(src, tokens))
+        if (tryChar(src, *tokens))
             continue;
 
         return {tokens, LexerError::UNKNOWN_TOKEN}; // No suitable interpretation
     }
+
+    return {tokens, LexerError::NO_ERROR};
 }
