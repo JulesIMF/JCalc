@@ -25,7 +25,6 @@ Revision History:
 // Includes / usings
 //
 
-
 //
 // Defines
 //
@@ -47,6 +46,9 @@ enum class ParserError
     EXPECTED_REQ,
     EXPECTED_TERM,
     EXPECTED_PRIM,
+    EXPECTED_BRACKET,
+    EXPECTED_EXPR,
+    UNEXPECTED_END,
 };
 
 #endif // !JCALC_ERRORS

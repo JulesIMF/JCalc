@@ -26,11 +26,13 @@ Revision History:
 //
 
 #include <lexer.h>
+#include <parser.h>
 
 //
 // Defines
 //
 
 void dumpLexer(Lexed lexed);
+void dumpParser(Parsed parsed);
 
 #endif // !JCALC_DRVDEBUG

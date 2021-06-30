@@ -41,6 +41,7 @@ enum class VertexType
     Delimiter,
     Linker,
     Asgn,
+    Call,
 };
 
 struct Vertex
@@ -48,18 +49,21 @@ struct Vertex
     VertexType type = VertexType::None;
     Vertex* left    = nullptr;
     Vertex* right   = nullptr;
+    virtual ~Vertex();
 };
 
 struct Operator : public Vertex
 {
     char opType;
     Operator(char opType_ = 0);
+    virtual ~Operator();
 };
 
 struct Asgn : public Vertex
 {
     char asgnType;
     Asgn(char asgnType_ = 0);
+    virtual ~Asgn();
 };
 
 enum class ImmType
@@ -78,23 +82,34 @@ struct Imm : public Vertex
     Imm(ImmType immType_ = ImmType::None);
     long long intValue = 0;
     double    floatValue = 0.0;
+    virtual ~Imm();
 };
 
 struct Id : public Vertex
 {
     std::string id;
     Id(std::string str = "");
+    virtual ~Id();
 };
 
 struct Delimiter : public Vertex
 {
     char delimeter;
     Delimiter(char delim = 0);
+    virtual ~Delimiter();
 };
 
 struct Linker : public Vertex
 {
     Linker();
+    virtual ~Linker();
 };
+
+struct Call : public Vertex
+{
+    Call();
+    virtual ~Call();
+};
+
 
 #endif // !JCALC_VERTEX

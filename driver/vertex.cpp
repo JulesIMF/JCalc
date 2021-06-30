@@ -64,3 +64,25 @@ Linker::Linker()
 {
     type = VertexType::Linker;
 }
+
+Call::Call()
+{
+    type = VertexType::Call;
+}
+
+
+Vertex::~Vertex()       = default;
+
+Operator::~Operator()   = default;
+
+Asgn::~Asgn()           = default;
+
+Imm::~Imm()             = default;
+
+Id::~Id()               = default;
+
+Delimiter::~Delimiter() = default;
+
+Linker::~Linker()       = default;
+
+Call::~Call()           = default;

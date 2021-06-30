@@ -28,8 +28,10 @@ Revision History:
 #include <err.h>
 #include <colors.h>
 #include <lexer.h>
+#include <parser.h>
 #include <drvdebug.h>
 #include <messages.h>
+#include <cmd.h>
 
 
 using std::string;
@@ -37,7 +39,7 @@ using std::string;
 //
 // Defines
 //
-static char const* version = "Indev 2 (builded on " __DATE__ ")";
+static char const* version = "Indev 3 (builded on " __DATE__ ")";
 
 /**
  * Displays information about the app.
@@ -62,18 +64,6 @@ void displayPrompt(void)
 }
 
 /**
- * Termination function.
- * TODO: history savings
-*/
-void terminate(int param)
-{
-    printf("%s\n\tTerminating with param = %d%s\n", TerminalColor::BlueB, param, TerminalColor::Default);
-    auto error = ExitCode::NO_ERROR;
-    _Exit( (int)error );
-}
-
-
-/**
  * Application entry point.
 */
 int main()
@@ -90,6 +80,10 @@ int main()
         string input;
         displayPrompt();
         std::getline(std::cin, input);
+
+        if (handleCmd(input.c_str()))
+            continue;
+
         auto lexed = lexer(input.c_str());
         if (lexed.lexerError == LexerError::UNKNOWN_TOKEN)
         {
@@ -98,6 +92,16 @@ int main()
         }
 
         dumpLexer(lexed); 
-        lexed.freeLexed();
+        
+        Parser parser(lexed);
+        auto parsed = parser.getLine();
+
+        if (parsed.parserError != ParserError::NO_ERROR)
+        {
+            errorMessage("%s!", parserErrorToStr(parsed.parserError));
+            continue;
+        }
+
+        dumpParser(parsed);
     }
 }

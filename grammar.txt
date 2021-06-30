@@ -23,7 +23,7 @@ Examples:
 
     exit
     var     =   3; var + 4
-    3*(var + 4/5)/sqrt(5)*sin(4.5)
+    3*(var + 4/5)/sqrt(5)*sin(4.5);var     =   3; var + 4
 
 LINE    ::=     REQ {';' REQ}*
 REQ     ::=     EXPR | ASGN | _epsilon

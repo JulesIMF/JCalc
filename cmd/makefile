@@ -4,8 +4,8 @@ INC		= ../includes
 CFLAGS	= -O2 -g -c -I$(INC)
 LFLAGS	= -r
 
-OBJS	= messages.o colors.o terminate.o
-TASK	= common
+OBJS	= exit.o handlecmd.o help.o
+TASK	= cmd
 
 $(TASK).o: $(OBJS)
 	$(LD) $(LFLAGS) $^ -o $@

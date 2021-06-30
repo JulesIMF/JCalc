@@ -36,6 +36,10 @@ struct Parsed
 {
     Vertex* ast;
     ParserError parserError = ParserError::NO_ERROR;
+
+    std::vector<Vertex*>* trash; // vertexes that need to be deleted but do not belong to the AST
+
+    static void deleteTree(Vertex* vertex);
     void freeParsed(void);
 };
 
@@ -47,6 +51,7 @@ private:
     ParserError error   = ParserError::NO_ERROR;  
     bool notEnd         = true;
     std::vector<Vertex*>* tokens;
+    std::vector<Vertex*>* trash;
 
 public:
     Parser(Lexed lexed_);
@@ -63,5 +68,7 @@ private:
     void inc(int shift = 1);
     Vertex* atShiftOf(int shift);
 };
+
+char const *parserErrorToStr(ParserError error);
 
 #endif // !JCALC_PARSER

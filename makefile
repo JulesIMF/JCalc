@@ -1,8 +1,8 @@
 CXX		= g++
 INC		= includes
-CFLAGS	= -O0 -g -I$(INC)
+CFLAGS	= -O2 -g -I$(INC)
 
-OBJS= common/common.o driver/driver.o main.o
+OBJS= common/common.o driver/driver.o main.o cmd/cmd.o
 
 jcalc: $(OBJS)
 	$(CXX) $(CFLAGS) $^ -o $@

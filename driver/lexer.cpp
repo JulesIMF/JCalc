@@ -90,7 +90,12 @@ static bool tryAsgn(char const*& src, vector<Vertex *> &tokens)
     char asgnType = 0;
 
     if (src[1] == '=' || src[0] == '=')
+    {
         asgnType = src[0];
+        src += 1 + (src[1] == '='); // if src[1] == '=', then asgn takes
+                                    // 2 signs, if no -- then one
+    }
+
     else
         return false;
 
@@ -329,10 +334,6 @@ Lexed lexer(char const *src)
     {
         if (trySpace(src, *tokens))
             continue;
-        if (tryAsgn(src, *tokens))       // it`s nessesary to place it here
-            continue;
-        if (tryOperator(src, *tokens))   // cause tryOperator can recognize '+=' as '+'
-            continue;
         if (tryNum(src, *tokens))
             continue;
         if (tryLinker(src, *tokens))
@@ -342,6 +343,10 @@ Lexed lexer(char const *src)
         if (tryDelimiter(src, *tokens))
             continue;
         if (tryChar(src, *tokens))
+            continue;
+        if (tryAsgn(src, *tokens)) // it`s nessesary to place it here
+            continue;
+        if (tryOperator(src, *tokens)) // cause tryOperator can recognize '+=' as '+'
             continue;
 
         return {tokens, LexerError::UNKNOWN_TOKEN}; // No suitable interpretation

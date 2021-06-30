@@ -1,10 +1,10 @@
 CXX		= g++
 LD		= ld
 INC		= ../includes
-CFLAGS	= -O0 -g -c -I$(INC)
+CFLAGS	= -O2 -g -c -I$(INC)
 LFLAGS	= -r
 
-OBJS	= drvdebug.o lexer.o vertex.o
+OBJS	= drvdebug.o lexer.o vertex.o parser.o
 TASK	= driver
 
 $(TASK).o: $(OBJS)

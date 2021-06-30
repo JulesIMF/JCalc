@@ -1,0 +1,23 @@
+digraph
+{
+dpi = 300;
+v0x55f3de7b1e30[label = "Linker", shape = "parallelogram", fillcolor = "orange", style = "filled, bold", fontsize = 15];
+v0x55f3de7b1e30->v0x55f3de7b1c00 [color = "red"]
+v0x55f3de7b1c00[label = "Linker", shape = "parallelogram", fillcolor = "orange", style = "filled, bold", fontsize = 15];
+v0x55f3de7b1c00->v0x55f3de7b1c30 [color = "red"]
+v0x55f3de7b1c30[label = "Linker", shape = "parallelogram", fillcolor = "orange", style = "filled, bold", fontsize = 15];
+v0x55f3de7b1c30->v0x55f3de7b1b70 [color = "red"]
+v0x55f3de7b1b70[label = "Asgn\nasgnType = '='", shape = "diamond", style = "filled, bold", fillcolor = "darkorchid1", fontsize = 15];
+v0x55f3de7b1b70->v0x55f3de7b1b00 [color = "red"]
+v0x55f3de7b1b00[label = "Id\n\"s\"", shape = "record", style = "bold", fontsize = 15]; 
+v0x55f3de7b1b70->v0x55f3de7b1bc0 [color = "blue"]
+v0x55f3de7b1bc0[label = "Imm\nint = 52, float = 0.000000, Char", shape = "record", style = "bold", fontsize = 15];
+v0x55f3de7b1c30->v0x55f3de7b1c60 [color = "blue"]
+v0x55f3de7b1c60[label = "Imm\nint = 5, float = 0.000000, Dec", shape = "record", style = "bold", fontsize = 15];
+v0x55f3de7b1c00->v0x55f3de7b1d30 [color = "blue"]
+v0x55f3de7b1d30[label = "Operator\nopType = '+'", shape = "octagon", style = "filled, bold", fillcolor = "yellow", fontsize = 15];
+v0x55f3de7b1d30->v0x55f3de7b1cf0 [color = "red"]
+v0x55f3de7b1cf0[label = "Imm\nint = 5, float = 0.000000, Dec", shape = "record", style = "bold", fontsize = 15];
+v0x55f3de7b1d30->v0x55f3de7b1d60 [color = "blue"]
+v0x55f3de7b1d60[label = "Imm\nint = 3, float = 0.000000, Dec", shape = "record", style = "bold", fontsize = 15];
+}
